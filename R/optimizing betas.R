@@ -10,7 +10,15 @@
 #' @importFrom stats
 #' @export
 #' @examples
-betas <- function(Beta, y, x, Norm){
+#'   x <- matrix(rnorm(600), nrow=200)
+#'   epsilon <- rnorm(200, 0, sd=.25)
+#'   x <- cbind(rep(1,200), x)
+#'   actual_beta <- rnorm(4,5,10)
+#'   y <- x%*%actual_beta + epsilon
+#'   start_beta <- rnorm(4)
+#'   squared_error(start_beta, Y=y, X=x, norm="L2")
+#'   betas(Beta=start_beta, squared_error, y=y, x=x, norm="L2" )
+betas <- function(Beta, X, Norm){
 
   optim(Beta, squared_error, Y=y, X=x, norm=Norm)
 

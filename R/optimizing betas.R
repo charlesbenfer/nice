@@ -18,7 +18,7 @@
 #'   start_beta <- rnorm(4)
 #'   squared_error(start_beta, Y=y, X=x, norm="L2")
 #'   betas(Beta=start_beta, squared_error, y=y, x=x, norm="L2" )
-betas <- function(Beta, X, Norm){
+betas <- function(Beta, Y, X, Norm){
 
   optim(Beta, squared_error, Y=y, X=x, norm=Norm)
 

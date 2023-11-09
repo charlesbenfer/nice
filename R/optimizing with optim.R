@@ -34,29 +34,3 @@ squared_error <- function(Beta, Y, X, norm){
   return(out)
 
 }
-#' @title Finding the Betas
-#' @description This function will spit out the desired \code{beta} values for
-#' least squares
-#' @param Beta A \code{vector} containing the desired starting coeffs for estimation
-#' @param f A \code{function} that you want to optimize
-#' @param Y A \code{vector} containing outputs
-#' @param X A \code{matrix} containing predictors
-#' @param Norm A \code{character} defining loss to use (either 'L1' or 'L2')
-#' @return A \code{vector} giving the optimized beta values
-#' @author Charles Benfer
-#' @importFrom stats
-#' @export
-#' @examples
-#'   x <- matrix(rnorm(600), nrow=200)
-#'   epsilon <- rnorm(200, 0, sd=.25)
-#'   x <- cbind(rep(1,200), x)
-#'   actual_beta <- rnorm(4,5,10)
-#'   y <- x%*%actual_beta + epsilon
-#'   start_beta <- rnorm(4)
-#'   squared_error(start_beta, Y=y, X=x, norm="L2")
-#'   betas(Beta=start_beta, squared_error, Y=y, X=x, norm="L2" )
-betas <- function(Beta,f, Y, X, Norm){
-
-  optim(Beta, f, Y, X, Norm)
-
-}

@@ -2,6 +2,7 @@
 #' @description This function will spit out the desired \code{beta} values for the
 #' least squares function
 #' @param Beta A \code{vector} containing the desired starting coeffs for estimation
+#' @param f A \code{function} that we are optimizing. Default is \code{least_square} from the same package
 #' @param y A \code{vector} containing outputs
 #' @param x A \code{matrix} containing predictors
 #' @param Norm A \code{character} defining loss to use (either 'L1' or 'L2')
@@ -17,9 +18,9 @@
 #' y <- x%*%actual_beta + epsilon
 #' start_beta <- rnorm(4)
 #' betas(Beta=start_beta,y=y, x=x, Norm="L2")
-betas <- function(Beta, x, y, Norm){
+betas <- function(Beta, f=least_square, x, y, Norm){
 
-  optim(Beta, squared_error, Y=y, X=x, norm=Norm)
+  optim(Beta, f, Y=y, X=x, norm=Norm)
 
 }
 
